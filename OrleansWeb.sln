@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1705.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfContainedWeb", "OrleansWeb\SelfContainedWeb.csproj", "{5DF13BA8-8893-4022-809E-B089C1AFD3DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfContainedWeb", "SelfContainedWeb\SelfContainedWeb.csproj", "{5DF13BA8-8893-4022-809E-B089C1AFD3DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrainInterfaces", "GrainInterfaces\GrainInterfaces.csproj", "{5662AC03-D88C-48C3-A7CE-70E8D66A6CFF}"
 EndProject
