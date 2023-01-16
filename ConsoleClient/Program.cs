@@ -48,7 +48,7 @@ static async Task<IHost> StartClientAsync()
 
 static async Task DoClientWorkAsync(IClusterClient client)
 {
-    var name = "Jane Bond";
+    var name = "Fred";
     var divider = new String('-', 50);
 
     // HelloWorld grain
