@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace OrleansWeb.Controllers;
+namespace WebClient.Controllers;
 
 [ApiController]
 [Route("[controller]")]

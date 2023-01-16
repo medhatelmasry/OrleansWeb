@@ -1,4 +1,4 @@
-﻿namespace OrleansWeb;
+﻿namespace WebClient;
 
 public class WeatherForecast
 {

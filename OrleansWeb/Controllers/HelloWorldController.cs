@@ -1,7 +1,7 @@
 ﻿using GrainInterfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace OrleansWeb.Controllers;
+namespace WebClient.Controllers;
 
 public class HelloWorldController : Controller
 {
