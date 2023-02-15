@@ -1,10 +1,50 @@
-﻿@page
+@page "{handler?}"
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">@ViewData["Title"]</h1>
-    <p>@ViewData["response"]</p>
+<h1>@ViewData["Title"]</h1>
+
+<div class="alert alert-success" role="alert">
+    <h5 class="clearfix">@Model.Message</h5>
 </div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <form asp-page-handler="key" method="post">
+            <input type="text" name="key" value="@Model.Key" placeholder="Enter string key" />
+            <button class="btn btn-secondary btn-sm">Set Key</button>  
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-4">
+        <form asp-page-handler="increment" method="post">
+            <input type="number" name="count" placeholder="Increment by ..." />
+            <button class="btn btn-success btn-sm">Increment</button>
+            <input name="key" type="hidden" value="@Model.Key" />
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-4">
+        <form asp-page-handler="decrement" method="post">
+            <input type="number" name="count" placeholder="Decrement by ..." />
+            <button class="btn btn-danger btn-sm">Decrement</button>
+            <input name="key" type="hidden" value="@Model.Key" />
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-4">
+        <form asp-page-handler="count" method="post">
+            <button class="btn btn-primary btn-sm">Get Count</button>
+            <input name="key" type="hidden" value="@Model.Key" />
+        </form>
+    </div>
+</div>
+
