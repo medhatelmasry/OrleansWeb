@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using GrainInterfaces;
-using System.Xml.Linq;
-using Orleans;
 
 try
 {
@@ -21,7 +19,7 @@ catch (Exception e)
 {
     Console.WriteLine($$"""
         Exception while trying to run client: {{e.Message}}
-        Make sure the silo the client is trying to connect to is running.
+        Make sure the silo is running.
         Press any key to exit.
         """);
 
@@ -41,26 +39,30 @@ static async Task<IHost> StartClientAsync()
     var host = builder.Build();
     await host.StartAsync();
 
-    Console.WriteLine("Client successfully connected to silo host \n");
+    Console.WriteLine("Client successfully connected to silo host.\n");
 
     return host;
 }
 
 static async Task DoClientWorkAsync(IClusterClient client)
 {
-    var name = "Fred";
-    var divider = new String('-', 50);
+    var divider = "\n" + new String('-', 50) + "\n";
 
     // HelloWorld grain
-    var helloGrain = client.GetGrain<IHelloWorldGrain>(name);
-    var helloGrainResponse = await helloGrain.SayHelloToAsync(name);
+    var helloKey = "Fred";
+    var helloGrain = client.GetGrain<IHelloGrain>(helloKey);
+    var helloGrainResponse = await helloGrain.SayHello(helloKey);
 
-    Console.WriteLine($"\n\n{helloGrainResponse}\n\n{divider}");
+    Console.WriteLine($"{helloGrainResponse}{divider}");
 
-    // Person grain
-    var personGrain = client.GetGrain<IPersonGrain>(name);
-    var personGrainesponse = await personGrain.SayHelloAsync();
+    // CounterGrain
+    var counterGrain = client.GetGrain<ICounterGrain>("Alfread");
+    var currentCount = await counterGrain.GetCount();
+    Console.WriteLine($"{currentCount}{divider}");
 
-    Console.WriteLine($"\n\n{personGrainesponse}\n\n{divider}");
+    var result = await counterGrain.Increment(10);
+    Console.WriteLine(result);
+    currentCount = await counterGrain.GetCount();
+    Console.WriteLine($"{currentCount}{divider}");
 
 }
