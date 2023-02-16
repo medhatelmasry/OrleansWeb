@@ -61,7 +61,7 @@ static async Task DoClientWorkAsync(IClusterClient client)
     Console.WriteLine($"{currentCount}{divider}");
 
     var result = await counterGrain.Increment(10);
-    Console.WriteLine(result);
+    Console.WriteLine($"{result}{divider}");
     currentCount = await counterGrain.GetCount();
     Console.WriteLine($"{currentCount}{divider}");
 
