@@ -15,14 +15,14 @@ public class HelloWorldController : Controller
     [HttpGet("/hello/{name}")]
     public async Task<IActionResult> Hello(string name)
     {
-        var result = await clusterClient.GetGrain<IHelloWorldGrain>(name).SayHelloToAsync(name);
+        var result = await clusterClient.GetGrain<IHelloGrain>(name).SayHello(name);
         return Ok(result);
     }
 
     [HttpGet("/person/{name}")]
     public async Task<IActionResult> Person(string name)
     {
-        var result = await clusterClient.GetGrain<IPersonGrain>(name).SayHelloAsync();
+        var result = await clusterClient.GetGrain<ICounterGrain>(name).GetCount();
         return Ok(result);
     }
 }

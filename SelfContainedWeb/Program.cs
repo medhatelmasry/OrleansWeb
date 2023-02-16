@@ -13,7 +13,7 @@ builder.Host.UseOrleans(siloBuilder =>
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddTransient<IHelloWorldGrain, HelloWorldGrain>();
+builder.Services.AddTransient<IHelloGrain, HelloGrain>();
 
 var app = builder.Build();
 
