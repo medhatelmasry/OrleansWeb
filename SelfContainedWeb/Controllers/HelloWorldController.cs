@@ -13,6 +13,7 @@ public class HelloWorldController : Controller
     }
 
     [HttpGet("/hello/{name}")]
+    // to hit this endpoint, simple enter http://localhost:5055/hello/fred
     public async Task<IActionResult> Hello(string name)
     {
         var result = await clusterClient.GetGrain<IHelloGrain>(name).SayHello(name);
